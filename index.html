@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hành Động Vì Môi Trường</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f9f5;
+            color: #333;
+            line-height: 1.6;
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            padding: 0 15px;
+        }
+
+        header {
+            background: linear-gradient(to bottom, #2c5530, #3e7c3e);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+
+        .hero-section {
+            padding: 25px 0 15px;
+            text-align: center;
+        }
+
+        .hero-section h2 {
+            color: #2c5530;
+            margin-bottom: 15px;
+            font-size: 1.7rem;
+        }
+
+        .hero-section p {
+            color: #555;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        .scene-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .scene-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .scene-image {
+            height: 250px;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .scene-1 {
+            background: linear-gradient(rgba(139, 90, 0, 0.2), rgba(139, 90, 0, 0.1)), #f8ecc9;
+            position: relative;
+        }
+
+        .scene-1::before {
+            content: "🌄";
+            position: absolute;
+            font-size: 2.5rem;
+            top: 20px;
+            left: 20px;
+            z-index: 2;
+        }
+
+        .scene-1::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 70% 30%, rgba(255, 204, 102, 0.4) 0%, transparent 50%),
+                        radial-gradient(circle at 30% 70%, rgba(210, 180, 140, 0.3) 0%, transparent 50%);
+        }
+
+        .scene-2 {
+            background: linear-gradient(rgba(34, 139, 34, 0.15), rgba(50, 205, 50, 0.1)), #e8f5e8;
+            position: relative;
+        }
+
+        .scene-2::before {
+            content: "🌍";
+            position: absolute;
+            font-size: 2.5rem;
+            top: 20px;
+            left: 20px;
+            z-index: 2;
+        }
+
+        .scene-2::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 40%, rgba(144, 238, 144, 0.5) 0%, transparent 40%),
+                        radial-gradient(circle at 70% 60%, rgba(102, 205, 170, 0.4) 0%, transparent 40%);
+        }
+
+        .scene-3 {
+            background: linear-gradient(rgba(30, 144, 255, 0.15), rgba(135, 206, 250, 0.1)), #e8f4fc;
+            position: relative;
+        }
+
+        .scene-3::before {
+            content: "🤖";
+            position: absolute;
+            font-size: 2.5rem;
+            top: 20px;
+            left: 20px;
+            z-index: 2;
+        }
+
+        .scene-3::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 30%, rgba(173, 216, 230, 0.6) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(135, 206, 250, 0.4) 0%, transparent 40%);
+        }
+
+        .scene-info {
+            padding: 20px;
+        }
+
+        .scene-info h3 {
+            color: #2c5530;
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .scene-info h3 i {
+            margin-right: 10px;
+            color: #3e7c3e;
+        }
+
+        .scene-info p {
+            color: #555;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .scene-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background-color: #f0f7f0;
+            color: #3e7c3e;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .action-section {
+            background-color: #2c5530;
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+            border-radius: 15px;
+            margin: 25px 0 35px;
+        }
+
+        .action-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .action-section p {
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #ffcc00;
+            color: #2c5530;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn:hover {
+            background-color: #ffdb4d;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            background-color: #1a3c23;
+            color: #c8e6c9;
+            text-align: center;
+            padding: 25px 20px;
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .footer-links a {
+            color: #a5d6a7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ffcc00;
+        }
+
+        .copyright {
+            margin-top: 20px;
+            opacity: 0.7;
+            font-size: 0.85rem;
+        }
+
+        /* Hiệu ứng cho các phân cảnh */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .scene-card {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .scene-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .scene-card:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .hero-section h2 {
+                font-size: 1.5rem;
+            }
+            
+            .scene-image {
+                height: 220px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 720px;
+                margin: 0 auto;
+            }
+            
+            .scene-card {
+                display: flex;
+                flex-direction: row;
+            }
+            
+            .scene-image {
+                width: 40%;
+                height: auto;
+            }
+            
+            .scene-info {
+                width: 60%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-leaf"></i> Hành Động Vì Môi Trường</h1>
+            <p>Khám phá những cách chúng ta có thể bảo vệ và phục hồi hành tinh của mình</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero-section">
+            <h2>Ba Tầm Nhìn Cho Tương Lai Xanh</h2>
+            <p>Lấy cảm hứng từ các prompt hình ảnh về môi trường, dưới đây là ba phân cảnh thể hiện sự hồi sinh của thiên nhiên thông qua nỗ lực của con người và công nghệ.</p>
+        </section>
+
+        <!-- Phân cảnh 1: Trồng cây -->
+        <div class="scene-card">
+            <div class="scene-image scene-1"></div>
+            <div class="scene-info">
+                <h3><i class="fas fa-tree"></i> Hồi Sinh Rừng Nghèo</h3>
+                <p>Một nhóm tình nguyện viên đa dạng trồng cây non trong cảnh quan khô cằn đã bị phá rừng vào giờ hoàng hôn vàng. Bụi bặm và ánh sáng ấm áp, phong cách tài liệu National Geographic.</p>
+                <div class="scene-tags">
+                    <span class="tag">Trồng Rừng</span>
+                    <span class="tag">Hoạt Động Cộng Đồng</span>
+                    <span class="tag">Phục Hồi Sinh Thái</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phân cảnh 2: Bàn tay bảo vệ Trái Đất -->
+        <div class="scene-card">
+            <div class="scene-image scene-2"></div>
+            <div class="scene-info">
+                <h3><i class="fas fa-hands-helping"></i> Bàn Tay Thiên Nhiên</h3>
+                <p>Những bàn tay khổng lồ làm từ rễ cây đan xen, rêu và đất, nhẹ nhàng nâng niu hành tinh Trái Đất thu nhỏ đang phát sáng. Phong cách hiện thực kỳ ảo, ánh sáng kịch tính.</p>
+                <div class="scene-tags">
+                    <span class="tag">Bảo Vệ Hành Tinh</span>
+                    <span class="tag">Hiện Thực Kỳ Ảo</span>
+                    <span class="tag">Sự Sống Tái Sinh</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phân cảnh 3: Robot dọn rác đại dương -->
+        <div class="scene-card">
+            <div class="scene-image scene-3"></div>
+            <div class="scene-info">
+                <h3><i class="fas fa-robot"></i> Công Nghệ Làm Sạch Đại Dương</h3>
+                <p>Tàu robot tự hành chạy bằng năng lượng mặt trời dọn dẹp các mảng rác thải nhựa trôi nổi giữa đại dương. Nước trong xanh, rạn san hô phát triển mạnh. Tầm nhìn lạc quan về công nghệ bảo vệ thiên nhiên.</p>
+                <div class="scene-tags">
+                    <span class="tag">Công Nghệ Xanh</span>
+                    <span class="tag">Làm Sạch Đại Dương</span>
+                    <span class="tag">Năng Lượng Tái Tạo</span>
+                </div>
+            </div>
+        </div>
+
+        <section class="action-section">
+            <h3>Hãy Hành Động Ngay Hôm Nay</h3>
+            <p>Mỗi hành động nhỏ đều tạo nên sự khác biệt. Tham gia cùng chúng tôi trong nỗ lực bảo vệ và phục hồi môi trường cho các thế hệ tương lai.</p>
+            <a href="#" class="btn">Tham Gia Ngay</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p><i class="fas fa-globe-americas"></i> Hãy cùng nhau tạo nên sự thay đổi tích cực cho hành tinh của chúng ta.</p>
+            <div class="footer-links">
+                <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+                <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+                <a href="#"><i class="fas fa-envelope"></i> Liên Hệ</a>
+            </div>
+            <div class="copyright">
+                <p>© 2023 Hành Động Vì Môi Trường. Lấy cảm hứng từ Midjourney prompts.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Hiệu ứng cuộn mượt cho các liên kết
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Thêm hiệu ứng cho các thẻ khi cuộn đến
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        // Quan sát các thẻ scene-card
+        document.querySelectorAll('.scene-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Thêm hiệu ứng cho nút hành động
+        const actionBtn = document.querySelector('.btn');
+        actionBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Tạo hiệu ứng phản hồi
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 200);
+            
+            // Hiển thị thông báo
+            alert('Cảm ơn bạn đã quan tâm! Chúng tôi sẽ liên hệ với bạn sớm nhất có thể.');
+        });
+    </script>
+</body>
+</html>
